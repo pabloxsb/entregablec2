@@ -1,0 +1,57 @@
+class TicketManager {
+  
+    static #ultimoIdEvento = 1
+
+    constructor() {
+        this.#eventos = []
+        this.#precioBaseDeGanancia = 0.15
+    }
+
+    getEventos() {
+        return this.#eventos
+    }
+    
+    getNuevoId() {
+        const id = TicketManager.#ultimoIdEvento
+        TicketManager.#ultimoIdEvento++
+        return id
+
+    }
+
+    agregarEvento(nombre, lugar, precio, capacidad = 50, fecha = null) {
+        const evento = {
+            id: this.#getNuevoId(),
+            nombre,
+            lugar,
+            precio: precio + precio * this.#precioBaseDeGanancia,
+            capacidad,
+            fecha: fecha || new Date(),
+            participantes: []
+
+        }
+
+        this.#eventos.push(evento)
+    }
+
+    agregarUsuario(idEvento, idUsuario){
+
+        const eventoAUsar = this.#eventos.find(evt => evt.id === idEvento)
+        if (!eventoAUsar) {
+                return
+        }
+
+        if (evento.participantes.includes(idUsuario)) {
+            return
+        }
+        evento.participantes.push(idUsuario)
+    }
+
+    ponerEventoEnGira(idEvento, localidad, fecha) {
+        const
+    }
+}
+
+const TicketManager = new TicketManager()
+TicketManager.agregarEvento('Tomorrowland', 'Canada', 'ottawa',120)
+TicketManager.agregarEvento('rally dakar', 'peru ,lima', 50, 20, new Date(2024,6,15))
+TicketManager
